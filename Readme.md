@@ -17,9 +17,11 @@
 - 音频：中间产物统一 WAV/ Ogg，不依赖 ffmpeg。
 
 ## 使用方式
+```
 >epub2tts convert test.epub --engine kokoro --out out  --resume
 [1/16   6%] 合成 Cover
 [1/16   6%] 完成 Cover 0.0s -> ./out/test/chapters/001_Cover.wav
 [2/16  13%] 合成 id5
 [2/16  13%] 完成 id5 7.0s -> ./out/test/chapters/002_id5.wav
 [3/16  19%] 合成 id6
+```
