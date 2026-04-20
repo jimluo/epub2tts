@@ -1,0 +1,38 @@
+[package]
+name = "epub2tts"
+version = "0.1.0"
+edition = "2024"
+authors = ["jimluo"]
+description = "电子书转有声书"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+time = { version = "0.3", features = ["formatting"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+epub = "2.1.5"
+sentencex = "0.1"
+scraper = "0.26.0"
+unicode-normalization = "0.1.25"
+hound = "3.5.1"
+ort = { version = "=2.0.0-rc.9", optional = true }
+ort-sys = { version = "=2.0.0-rc.9", optional = true }
+ndarray = { version = "=0.16.1", optional = true }
+bincode = { version = "=2.0.1", optional = true }
+tokio = { version = "1.48.0", features = ["rt", "sync"], optional = true }
+candle-core = { version = "0.8.4", optional = true }
+kokoro-tts = { git = "https://github.com/artisdom/kokoro-rs", optional = true }
+fish_speech_core = { path = "fishtts/fish_speech_core", optional = true }
+server = { path = "fishtts/server", optional = true }
+
+[features]
+default = []
+fish = ["dep:fish_speech_core", "dep:server", "dep:tokio", "dep:candle-core"]
+kokoro = [
+    "dep:kokoro-tts",
+    "dep:ort",
+    "dep:ort-sys",
+    "dep:ndarray",
+    "dep:bincode",
+]
